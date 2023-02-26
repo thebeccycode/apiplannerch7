@@ -48,23 +48,31 @@ const timeSegments = [
 ];
 
 function timeBlocks(){
-    let plannerBlocks = ''
+    let plannerHTML = ''
 
     for (let i = 0; i < timeSegments.length; i++) {
         const plannercards = timeSegments[i];
 
-        plannerBlocks+= 
+        plannerHTML+= 
         `
         <div class="card">
   <div class="card-body">
     ${plannercards.showsAs}
   </div>
+  <label for="reminder" class="form-label"> Reminder: </label>
+  <textarea class="form-control" id="reminder" rows="3"></textarea>
 </div>
         `
         
     }
 
-    $('planner-container').html(plannerBlocks);
+    $('planner-container').html(plannerHTML);
 }
 
+$("#planner-container").on("click", ".reminder-btn", function(){
+    const reminder = $(this).siblings("textarea").data("name");
+    console.log(reminder)
+});
+
 timeBlocks();
+
