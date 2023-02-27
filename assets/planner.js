@@ -59,14 +59,14 @@ function timeBlocks(){
   <div class="card-body">
     ${plannercards.showsAs}
   </div>
-  <label for="reminder" class="form-label"> Reminder: </label>
+  <label id="reminder-btn" for="reminder" class="form-label"> Reminder: </label>
   <textarea class="form-control" id="reminder" rows="3"></textarea>
 </div>
         `
         
     }
 
-    $('planner-container').html(plannerHTML);
+    $('#planner-container').html(plannerHTML);
 }
 
 $("#planner-container").on("click", ".reminder-btn", function(){
