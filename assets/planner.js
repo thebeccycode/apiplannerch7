@@ -61,9 +61,11 @@ function timeBlocks(){
     ${plannercards.showsAs}
   </div>
   <label id="reminder-btn" for="reminder" class="form-label"> Reminder: </label>
-  <textarea class="form-control" id="reminder" rows="3"></textarea>
-  <button id="reminder-submit" class="saveBtn" type="submit"> Submit</button>
+  <input type="text" rows="3" id="userInput">
+  <br>
+  <button onclick="getData()" id="reminder-submit" class="saveBtn" type="submit"> Submit</button>
 </div>
+<div id="output-for-reminder"></div>
         `
         
     }
@@ -71,32 +73,20 @@ function timeBlocks(){
     $('#planner-container').html(plannerHTML);
 }
 
-$("#planner-container").on("click", ".reminder-btn", function(){
-    const reminder = $(this).siblings("textarea").data("name");
-    console.log(reminder)
-});
-
 timeBlocks();
 
 
 //function for adding input to user-reminder card
-function addInput(){
-    let renderData = '';
+//retrieve input from reminder-btn's textarea
 
-    for (let i = 0; index < renderData.length; i++) {
-        const userReminder = renderData[i];
+function getData(){
+    let inputBox = document.getElementById("userInput");
+    
+    let inputData = inputBox.value
 
-        renderData+=
-        `
-        <div class="card-body" "user-reminder">
-          At ${plannercards.showsAs} , I need to ${userReminder}.
-        </div>
-      </div>`
-        
-    }
-    $('#user-reminder').html(renderData);
+    let reminderData = document.getElementById("output-for-reminder");
+
+    reminderData.innerHTML = `<p>Reminder: ${inputData}</p>`
 }
 
-addInput();
-
-//function for making time blocks colour change relevant to when showing past, present or future blocks
+getData();
