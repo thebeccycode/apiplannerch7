@@ -47,6 +47,7 @@ const timeSegments = [
 }
 ];
 
+//function for adding time blocks dynamically
 function timeBlocks(){
     let plannerHTML = ''
 
@@ -55,12 +56,13 @@ function timeBlocks(){
 
         plannerHTML+= 
         `
-        <div class="card">
-  <div class="card-body">
+        <div class="card time-block">
+  <div class="card-body" id="time-title">
     ${plannercards.showsAs}
   </div>
   <label id="reminder-btn" for="reminder" class="form-label"> Reminder: </label>
   <textarea class="form-control" id="reminder" rows="3"></textarea>
+  <button id="reminder-submit" class="saveBtn" type="submit"> Submit</button>
 </div>
         `
         
@@ -76,3 +78,25 @@ $("#planner-container").on("click", ".reminder-btn", function(){
 
 timeBlocks();
 
+
+//function for adding input to user-reminder card
+function addInput(){
+    let renderData = '';
+
+    for (let i = 0; index < renderData.length; i++) {
+        const userReminder = renderData[i];
+
+        renderData+=
+        `
+        <div class="card-body" "user-reminder">
+          At ${plannercards.showsAs} , I need to ${userReminder}.
+        </div>
+      </div>`
+        
+    }
+    $('#user-reminder').html(renderData);
+}
+
+addInput();
+
+//function for making time blocks colour change relevant to when showing past, present or future blocks
